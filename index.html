@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +9,41 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <title>Library</title>
 </head>
+
 <body>
     <header class="header">
         <h1>library</h1>
     </header>
 
     <div class="container">
+        <dialog id="bookDialog" class="book-modal">
+            <form method="dialog">
+                <p>
+                    <label for="bookTitle">Book title:</label>
+                    <input type="text" name="bookTitle" id="bookTitle">
+                </p>
+
+                <p>
+                    <label for="bookAuthor">Book author:</label>
+                    <input type="text" name="bookAuthor" id="bookAuthor">
+                </p>
+
+                <p>
+                    <label for="bookPages">Book pages:</label>
+                    <input type="number" name="bookPages" id="bookPages">
+                </p>
+
+                <div>
+                    <button id="cancel" type="reset">Cancel</button>
+                    <button class="confirm-button" type="submit">Confirm</button>
+                </div>
+            </form>
+        </dialog>
+
         <button class="add-book-btn">+ Add Book</button>
         <div class="books-grid">
         </div>
     </div>
 </body>
+
 </html>
