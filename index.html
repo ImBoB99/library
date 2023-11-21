@@ -17,30 +17,18 @@
 
     <div class="container">
         <dialog id="bookDialog" class="book-modal">
-            <form method="dialog">
-                <p>
-                    <label for="bookTitle">Book title:</label>
-                    <input type="text" name="bookTitle" id="bookTitle">
-                </p>
+            <form method="dialog" class="dialog-form">
+                <h2>Add New Book</h2>
+                <input type="text" name="bookTitle" id="bookTitle" placeholder="Title" required maxlength="100">
+                <input type="text" name="bookAuthor" id="bookAuthor" placeholder="Author" required maxlength="100">
+                <input type="number" name="bookPages" id="bookPages" placeholder="Pages" required max="10000" min="1">
+                <div class="checkbox-container">
+                    <label for="bookRead">Have you read it?</label>
+                    <input class="checkbox" type="checkbox" name="bookRead" id="bookRead">
+                </div>
 
-                <p>
-                    <label for="bookAuthor">Book author:</label>
-                    <input type="text" name="bookAuthor" id="bookAuthor">
-                </p>
-
-                <p>
-                    <label for="bookPages">Book pages:</label>
-                    <input type="number" name="bookPages" id="bookPages">
-                </p>
-
-                <p>
-                    <label for="bookRead">Read</label>
-                    <input type="checkbox" name="bookRead" id="bookRead">
-                </p>
-
-                <div>
-                    <button id="cancel" type="reset">Cancel</button>
-                    <button class="confirm-button" type="submit">Confirm</button>
+                <div class="form-button">
+                    <button class="confirm-button" type="submit">Submit</button>
                 </div>
             </form>
         </dialog>

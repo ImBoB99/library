@@ -13,7 +13,7 @@ body {
 .header {
     padding: 1rem;
     background-color: #f9fafb;
-    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.1) , 0px 1px 2px 0px rgba(0,0,0,0.06);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
 }
 
 .header h1 {
@@ -22,35 +22,63 @@ body {
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
+    margin: 1rem auto auto auto;
+    max-width: 1280px;
 }
 
 .add-book-btn {
     padding: 1rem;
     margin: 1rem;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 6px;
+    border: none;
+    transition: ease-in-out 0.15s;
+}
+
+.add-book-btn:hover {
+    cursor: pointer;
+    background-color: #f9fafb6e;
+    transition: ease-in-out 0.15s;
 }
 
 .books-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 .book {
-    min-height: 200px;
-    min-width: 200px;
     background-color: #f9fafb;
-    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.1) , 0px 1px 2px 0px rgba(0,0,0,0.06);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
     padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 20px;
+    line-height: 1.2;
+    gap: 2rem;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
-.book p {
-    margin: 10px;
+.button {
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #f0eef1;
+    transition: 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-color: #ff7070;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
 }
 
 .book-modal {
@@ -58,10 +86,85 @@ body {
     padding: 2rem;
     border: none;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+}
+
+.book-modal[open] {
+    animation: fadein 0.3s ease-in forwards;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        background-color: #e8e9ea;
+    }
 }
 
 .book-modal::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dialog-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dialog-form h2 {
+    text-align: center;
+}
+
+.dialog-form input[type="text"], input[type="number"] {
+    padding: 10px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    outline: none;
+    border: none;
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.checkbox-container label {
+    font-size: 20px;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+}
+
+.form-button {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.confirm-button {
+    background-color: #9fff9c;
+    border: none;
+    border-radius: 6px;
+    padding: 1rem;
+    font-size: 20px;
+    transition: ease-in-out 0.15s;
+}
+
+.confirm-button:hover {
+    cursor: pointer;
+    background-color: #84f380;
+    transition: ease-in-out 0.15s;
 }
 
 .delete-button {
@@ -69,11 +172,19 @@ body {
 }
 
 .read {
-    background-color: green;
+    background-color: #9fff9c;
     padding: 1rem;
 }
 
+.read:hover {
+    background-color: #93f590;
+}
+
 .unread {
-    background-color: red;
+    background-color: #ff7070;
     padding: 1rem;
+}
+
+.unread:hover {
+    background-color: #f56767;
 }

@@ -30,12 +30,12 @@ function updateBookList(book, index) {
     bookAuthor.textContent = book.author;
 
     const bookPages = document.createElement("p");
-    bookPages.textContent = book.pages;
+    bookPages.textContent = book.pages + " pages";
 
     // Button to toggle read status
     const toggleReadButton = document.createElement("button");
     toggleReadButton.innerText = book.read ? "Read" : "Not Read";
-    toggleReadButton.classList.add(book.read ? "read" : "unread");
+    toggleReadButton.classList.add("button", book.read ? "read" : "unread");
     toggleReadButton.addEventListener("click", () => {
         book.toggleRead(); // Toggle the book's read status
         renderBooks(); // Update the display after toggling the status
@@ -43,7 +43,7 @@ function updateBookList(book, index) {
     
 
     const bookDelete = document.createElement("button");
-    bookDelete.classList.add("delete-button");
+    bookDelete.classList.add("delete-button", "button");
     bookDelete.innerText = "Delete Book";
     bookDelete.addEventListener("click", (e) => {
         const index = e.target.parentElement.getAttribute("data-index");
@@ -74,7 +74,6 @@ function renderBooks() {
 }
 
 const addBookButton = document.querySelector(".add-book-btn");
-const cancelBookButton = document.getElementById("cancel");
 const confirmBookButton = document.querySelector(".confirm-button")
 const dialog = document.getElementById("bookDialog");
 
@@ -87,15 +86,29 @@ addBookButton.addEventListener("click", () => {
     dialog.showModal();
 })
 
-cancelBookButton.addEventListener("click", () => {
-    dialog.close();
-})
-
 confirmBookButton.addEventListener("click", (event) => {
     event.preventDefault();
 
     const isBookRead = inputBookRead.checked;
 
-    dialog.close();
-    addBookToLibrary(inputBookTitle.value, inputBookAuthor.value, inputBookPages.value, isBookRead);
+    //validate form fields because form validation with required doesn't work inside dialog element
+    const title = document.getElementById('bookTitle').value.trim();
+    const author = document.getElementById('bookAuthor').value.trim();
+    const pages = document.getElementById('bookPages').value.trim();
+
+    if (title === '' || author === '' || pages === '') {
+        alert('Please fill in all required fields.');
+    } else {
+        // If all required fields are filled, you can proceed with form submission
+        dialog.close();
+        addBookToLibrary(inputBookTitle.value, inputBookAuthor.value, inputBookPages.value, isBookRead);
+    }
+
+
 })
+
+dialog.addEventListener("mousedown", (event) => {
+    if (event.target === dialog) {
+        dialog.close();
+    }
+});
