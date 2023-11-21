@@ -63,3 +63,17 @@ body {
 .book-modal::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.delete-button {
+    padding: 1rem;
+}
+
+.read {
+    background-color: green;
+    padding: 1rem;
+}
+
+.unread {
+    background-color: red;
+    padding: 1rem;
+}
